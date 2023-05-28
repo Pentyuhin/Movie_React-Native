@@ -1,4 +1,4 @@
-import {ComponentType} from 'react'
+import { ComponentType } from 'react'
 
 export type TypeRootStackParamList = {
 	Auth: undefined
@@ -14,7 +14,9 @@ export type TypeRootStackParamList = {
 	Genre: {
 		slug: string
 	}
-
+	Actor: {
+		slug: string
+	}
 } & TypeRootStackAdminList
 
 type TypeRootStackAdminList = {

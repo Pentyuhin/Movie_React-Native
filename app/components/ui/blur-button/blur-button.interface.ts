@@ -7,5 +7,5 @@ export interface IBlurButton extends PressableProps {
 	icon?: TypeFeatherIconNames
 	iconSize?: number
 	color?: string
-	isSmall: boolean
+	isSmall?: boolean
 }
