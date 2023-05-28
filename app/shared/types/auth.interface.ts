@@ -1,22 +1,22 @@
 import {IUser} from '@/shared/types/user.interface'
 
-export interface IAuthInterfaceData extends Pick<IUser, 'email' | 'password'> {}
+export interface IAuthFormData extends Pick<IUser, 'email' | 'password'> {}
 
 export enum EnumSecureStore {
-    ACCESS_TOKEN='accessToken',
-    REFRESH_TOKEN='refreshToken'
+    ACCESS_TOKEN = 'accessToken',
+    REFRESH_TOKEN = 'refreshToken'
 }
 
 export enum EnumAsyncStorage {
-    USER='user'
+    USER = 'user'
 }
 
-export interface  ITokens {
+export interface ITokens {
     accessToken: string
     refreshToken: string
 }
 
-export interface IAuthResponse extends ITokens{
+export interface IAuthResponse extends ITokens {
     user: IUser
 }
 

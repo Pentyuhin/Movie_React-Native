@@ -1,24 +1,29 @@
-import { FC, useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { Pressable, Text, View } from 'react-native'
+import {FC, useState} from 'react'
+import {SubmitHandler, useForm} from 'react-hook-form'
+import {Pressable, Text, View} from 'react-native'
 
-import { AuthFields } from '@/components/screens/auth/AuthFields'
-import { Loader } from '@/components/ui/Loader'
-import { Button } from '@/components/ui/button/Button'
-import { DismissKeyboard } from '@/components/ui/form-elements/field/DismissKeyboard'
+import {AuthFields} from '@/components/screens/auth/AuthFields'
+import {Loader} from '@/components/ui/Loader'
+import {Button} from '@/components/ui/button/Button'
+import {DismissKeyboard} from '@/components/ui/form-elements/field/DismissKeyboard'
 
-import { IAuthInterfaceData } from '@/shared/types/auth.interface'
+import {IAuthFormData} from '@/shared/types/auth.interface'
+import {useAuthMutations} from "@/components/screens/auth/useAuthMutations";
 
 export const Auth: FC = props => {
 	const [isReg, setIsReg] = useState(false)
 
-	const { handleSubmit, reset, control } = useForm<IAuthInterfaceData>({
+	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
-	const onSubmit: SubmitHandler<IAuthInterfaceData> = ({ email, password }) => {
-		console.log(email, password)
+
+	const {isLoading, registerSync, loginSync} = useAuthMutations(reset)
+
+	const onSubmit: SubmitHandler<IAuthFormData> = (data) => {
+		if(isReg) registerSync(data)
+		else loginSync(data)
 	}
-	const isLoading = false
+
 	return (
 		<DismissKeyboard className='bg-[#090909]'>
 			<View className='mx-2 items-center justify-center h-full'>

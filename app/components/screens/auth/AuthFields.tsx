@@ -1,20 +1,20 @@
-import { FC } from 'react'
-import { Control } from 'react-hook-form'
+import {FC} from 'react'
+import {Control} from 'react-hook-form'
 
-import { Field } from '@/components/ui/form-elements/field/Field'
+import {Field} from '@/components/ui/form-elements/field/Field'
 
-import { validEmail } from '@/shared/regex'
-import { IAuthInterfaceData } from '@/shared/types/auth.interface'
+import {validEmail} from '@/shared/regex'
+import {IAuthFormData} from '@/shared/types/auth.interface'
 
 interface IAuthFields {
-	control: Control<IAuthInterfaceData>
+	control: Control<IAuthFormData>
 	isPassRequired?: boolean
 }
 
 export const AuthFields: FC<IAuthFields> = ({ control, isPassRequired }) => {
 	return (
 		<>
-			<Field<IAuthInterfaceData>
+			<Field<IAuthFormData>
 				placeholder='Enter email'
 				control={control}
 				name='email'
@@ -28,10 +28,11 @@ export const AuthFields: FC<IAuthFields> = ({ control, isPassRequired }) => {
 				keyboardType='email-address'
 			/>
 
-			<Field<IAuthInterfaceData>
+			<Field<IAuthFormData>
 				placeholder='Enter password'
 				control={control}
 				name='password'
+				secureTextEntry
 				rules={
 					isPassRequired
 						? {

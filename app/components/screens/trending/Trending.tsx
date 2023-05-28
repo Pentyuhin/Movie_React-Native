@@ -1,10 +1,23 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+
+import { useTrending } from '@/components/screens/trending/useTrending'
+import { Layout } from '@/components/ui/Layout'
+import { Loader } from '@/components/ui/Loader'
+import { MovieCatalog } from '@/components/ui/movie/catalog/MovieCatalog'
 
 export const Trending: FC = () => {
+	const { movies, isLoading } = useTrending()
+
+	if (isLoading) return <Loader />
+
 	return (
-		<View>
-			<Text>Trending</Text>
-		</View>
+		<Layout isHasPadding>
+			<MovieCatalog
+				title='Trending'
+				movies={movies}
+				description='Trending movies in
+			 excellent quality: lega, safe, without ads'
+			/>
+		</Layout>
 	)
 }
