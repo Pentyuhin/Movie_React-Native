@@ -4,11 +4,11 @@ import {getAccessToken} from "@/services/auth.helper";
 import {errorCatch} from "@/services/api/error.api";
 import {AuthService} from "@/services/auth.service";
 import {getNewTokens} from "@/services/api/helper.auth";
-import {AppRegistry} from "react-native";
+
 import {getItemAsync} from "expo-secure-store";
 import {EnumSecureStore} from "@/shared/types/auth.interface";
 
-export const useCheckAuth = (routName: string) => {
+export const useCheckAuth = (routName?: string) => {
     const {user, setUser} = useAuth()
 
     useEffect(() => {

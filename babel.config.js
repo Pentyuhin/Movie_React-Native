@@ -10,7 +10,9 @@ module.exports = function (api) {
 					rootPathPrefix: '@/'
 				}
 			],
-			['nativewind/babel'], ['inline-dotenv']
+			['nativewind/babel'],
+			['inline-dotenv'],
+			['react-native-reanimated/plugin'],
 		]
 	}
 }
