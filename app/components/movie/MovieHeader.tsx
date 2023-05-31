@@ -1,36 +1,47 @@
 import { FC } from 'react'
-import { Animated, StyleSheet, Text, View } from 'react-native'
+import { Animated, Platform, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import { IMovieComponent } from '@/components/movie/movie-content/movie-page.interface'
+import { inputRange } from '@/components/movie/movie.constant'
 import { BlurButton } from '@/components/ui/blur-button/BlurButton'
 import { Rating } from '@/components/ui/movie/movie-item/Rating'
 import { FavoriteButton } from '@/components/ui/movie/movie-item/favorite-button/FavoriteButton'
 
 import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 
-import { IMovie } from '@/shared/types/movie.interface'
-
-interface IMovieHeader {
-	movie: IMovie
-}
-
-export const MovieHeader: FC<IMovieHeader> = ({ movie }) => {
+export const MovieHeader: FC<IMovieComponent> = ({ movie, y }) => {
 	const { goBack } = useTypedNavigation()
 
 	const { top } = useSafeAreaInsets()
 	return (
 		<View
 			className='absolute left-0 top-0 w-full z-1 flex-row justify-between items-center px-6 pb-4'
-			style={{ marginTop: -top, paddingTop: top + 6 }}
+			style={{
+				marginTop: -top,
+				paddingTop: Platform.OS === 'ios' ? top + 6 : top + 35
+			}}
 		>
 			<Animated.View
 				style={{
-					...StyleSheet.absoluteFillObject
+					...StyleSheet.absoluteFillObject,
+					opacity: y.interpolate({
+						inputRange,
+						outputRange: [0, 0, 1.8]
+					})
 				}}
 				className='bg-[#0D0404]'
 			/>
 			<BlurButton icon={'chevron-left'} iconSize={23} onPress={goBack} />
-			<Animated.View className='items-center w-2/3'>
+			<Animated.View
+				className='items-center w-2/3'
+				style={{
+					opacity: y.interpolate({
+						inputRange,
+						outputRange: [0, 0, 1.6]
+					})
+				}}
+			>
 				<Text
 					className='text-white font-semibold text-2xl mb-0.5 px-2'
 					numberOfLines={1}

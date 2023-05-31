@@ -1,10 +1,17 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView } from 'react-native'
 
-export const Admin: FC = props => {
+import { Statistics } from '@/components/screens/admin/home/statistics/Statistics'
+import { Layout } from '@/components/ui/Layout'
+import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
+
+export const Admin: FC = () => {
 	return (
-		<View>
-			<Text>I'm component Auth</Text>
-		</View>
+		<Layout isHasPadding>
+			<AdminNavigation title='Statistics' />
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<Statistics />
+			</ScrollView>
+		</Layout>
 	)
 }
