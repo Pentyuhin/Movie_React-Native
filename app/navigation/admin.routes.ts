@@ -8,4 +8,44 @@ export const adminRoutes: IRoute[] = [
 		component: Admin,
 		isAdmin: true
 	}
+	// {
+	// 	name: 'ActorEdit',
+	// 	component: ActorEdit,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'ActorList',
+	// 	component: ActorList,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'GenreEdit',
+	// 	component: GenreEdit,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'GenreList',
+	// 	component: GenreList,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'MovieEdit',
+	// 	component: MovieEdit,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'MovieList',
+	// 	component: MovieList,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'UserEdit',
+	// 	component: UserEdit,
+	// 	isAdmin: true
+	// },
+	// {
+	// 	name: 'UserList',
+	// 	component: UserList,
+	// 	isAdmin: true
+	// }
 ]

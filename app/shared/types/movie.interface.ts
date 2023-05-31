@@ -1,19 +1,6 @@
-export interface IGenre {
-	_id: string
-	name: string
-	slug: string
-	description: string
-}
+import { IActor } from './actor.interface'
 
-export interface IGenreEditInput extends Omit<IGenre, '_id'> {}
-
-export interface IActor {
-	_id: string
-	photo: string
-	name: string
-	countMovies: number
-	slug: string
-}
+import { IGenre } from '@/shared/types/ganre.interface'
 
 export interface IParameters {
 	year: number

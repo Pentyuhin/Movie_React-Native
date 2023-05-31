@@ -2,18 +2,19 @@ import { Entypo } from '@expo/vector-icons'
 import { FC } from 'react'
 import { Animated, StyleSheet, Text, View } from 'react-native'
 
+import { IMovieComponent } from '@/components/movie/movie-content/movie-page.interface'
+import { HEADER_HEIGHT } from '@/components/movie/movie.constant'
 import { GenreList } from '@/components/ui/movie/movie-item/GenreList'
 import { Rating } from '@/components/ui/movie/movie-item/Rating'
 
-import { IMovie } from '@/shared/types/movie.interface'
+export const MovieInfo: FC<IMovieComponent> = ({ movie, y }) => {
+	const opacity = y.interpolate({
+		inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT / 2],
+		outputRange: [1, 1, 0]
+	})
 
-interface IMovieInfo {
-	movie: IMovie
-}
-
-export const MovieInfo: FC<IMovieInfo> = ({ movie }) => {
 	return (
-		<Animated.View className='px-6 mb-3'>
+		<Animated.View className='px-6 mb-3' style={{ opacity }}>
 			<Text
 				className='text-5xl font-semibold text-[#F9FCFC] mb-2 pr-2'
 				numberOfLines={2}
